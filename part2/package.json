@@ -1,0 +1,12 @@
+{
+  "name": "feeds-comments-wall",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "pusher-feeds-server": "^0.2.1"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Feeds comments wall</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://rawgit.com/pusher/deliverfoo/master/pusher-feeds-client.js"></script>
+  <script>
+function publishComment() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "/comments", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(JSON.stringify({
+    comment: document.getElementById("comment").value,
+  }));
+  document.getElementById("comment").value = "";
+}
+
+const commentsFeed = new Feeds({
+  serviceId: "YOUR_SERVICE_ID_HERE",
+  cluster: "api-ceres.pusherplatform.io"
+}).feed("comments");
+
+// Subscribe to items published to the `comments` feed.
+commentsFeed.subscribe({
+  // Get the last 10 items that were published as our initial state
+  tailSize: 10,
+  // On each new item, append it to the `comments` ul element
+  onItem: ({ body: { created, data } }) => {
+    const itemEl = document.createElement("li");
+    itemEl.textContent = data.comment;
+    document.getElementById("comments").prepend(itemEl);
+  }
+});
+  </script>
+</head>
+
+<body style="padding: 30px;">
+  <div style="border-style: solid; width: 70%; margin: auto; padding: 10px;">
+    <h3>Comments</h3>
+    <input id="comment" type="text" style="width: 79%;">
+    <button type="button" style="width: 19%;" onclick="publishComment()">Publish</button>
+    <ul id="comments"></ul>
+  </div>
+</body>
+</html>
