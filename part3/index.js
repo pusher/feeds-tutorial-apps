@@ -17,9 +17,9 @@ app.use(session({ secret: 'SOME-SECRET' }));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.get("/login", (req, res) => {
-  req.session.userId = req.query.user_id;
-  res.redirect(`/comments/${req.query.user_id}`);
+app.post("/login", (req, res) => {
+  req.session.userId = req.body.user_id;
+  res.redirect(`/comments/${req.body.user_id}`);
 });
 
 app.get("/comments/:user_id", (req, res) => {
