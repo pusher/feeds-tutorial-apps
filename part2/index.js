@@ -1,12 +1,11 @@
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const Feeds = require("pusher-feeds-server").Feeds;
+const Feeds = require("pusher-feeds-server");
 
 const feeds = new Feeds({
-  serviceId: "YOUR_SERVICE_ID_HERE",
-  serviceKey: 'YOUR_SERVICE_KEY_HERE',
-  cluster: "api-ceres.pusherplatform.io"
+  instance: YOUR_INSTANCE_HERE,
+  key: YOUR_KEY_HERE
 });
 
 const app = express();

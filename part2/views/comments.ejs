@@ -17,12 +17,11 @@ function publishComment() {
 }
 
 const commentsFeed = new Feeds({
-  serviceId: "YOUR_SERVICE_ID_HERE",
-  cluster: "api-ceres.pusherplatform.io"
+  instance: YOUR_INSTANCE_HERE
 }).feed("<%= userId %>");
 
 commentsFeed.subscribe({
-  tailSize: 10,
+  previousItems: 10,
   onItem: ({ body: { created, data } }) => {
     const itemEl = document.createElement("li");
     itemEl.textContent = data.comment;
