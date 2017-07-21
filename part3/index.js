@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const Feeds = require("pusher-feeds-server");
 
 const feeds = new Feeds({
-  instance: YOUR_INSTANCE_HERE,
+  instanceId: YOUR_INSTANCE_ID_HERE,
   key: YOUR_KEY_HERE
 });
 
