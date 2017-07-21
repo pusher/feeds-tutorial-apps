@@ -17,7 +17,7 @@ function publishComment() {
 }
 
 const commentsFeed = new Feeds({
-  instance: YOUR_INSTANCE_HERE
+  instanceId: YOUR_INSTANCE_ID_HERE
 }).feed("<%= userId %>");
 
 commentsFeed.subscribe({
