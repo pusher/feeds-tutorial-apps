@@ -25,7 +25,7 @@ commentsFeed.subscribe({
   // Get the last 10 items that were published as our initial state
   previousItems: 10,
   // On each new item, append it to the `comments` ul element
-  onItem: ({ body: { created, data } }) => {
+  onItem: ({ created, data }) => {
     const itemEl = document.createElement("li");
     itemEl.textContent = data.comment;
     document.getElementById("comments").prepend(itemEl);
